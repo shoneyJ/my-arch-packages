@@ -1,0 +1,27 @@
+# Maintainer: Your Name <youremail@example.com>
+pkgname=grepjson
+pkgver=1.0
+pkgrel=1
+pkgdesc="CLI tool for interactive JSON inspection"
+arch=(x86_64)
+license=(MIT)
+url="https://github.com/shoneyJ/grepjson"
+depends=()
+makedepends=(go)
+provides=("$pkgname")
+source=("git+https://github.com/shoneyJ/grepjson.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/$pkgname/cmd/grepjson"
+  go build \
+    -buildmode=pie \
+    -trimpath \
+    -ldflags "-s -w" \
+    -o "$pkgname"
+}
+
+package() {
+  cd "$srcdir/$pkgname/cmd/grepjson"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+}
