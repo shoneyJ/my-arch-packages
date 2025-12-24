@@ -1,6 +1,6 @@
 pkgname=my-development-tools
 pkgver=1.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc='my development tool dependencies'
 arch=(any)
 license=(None)
@@ -11,5 +11,6 @@ depends=(
   docker
   docker-compose
   tmux
-
+  lazygit
+  lazydocker
 )
